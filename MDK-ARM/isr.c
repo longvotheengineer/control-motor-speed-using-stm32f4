@@ -29,18 +29,17 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 	}
 	else if (htim->Instance == TIM4)
 	{
-//		memcpy(uart_tx_buffer, UART_CHECK_CONNECTION, sizeof(UART_CHECK_CONNECTION));
-//		HAL_UART_Transmit_DMA(&huart4, uart_tx_buffer, sizeof(UART_CHECK_CONNECTION));		
+//		memcpy(uart_tx_buffer, UART_TX_CHECK_CONNECTION, sizeof(UART_TX_CHECK_CONNECTION));
+//		HAL_UART_Transmit_DMA(&huart4, uart_tx_buffer, sizeof(UART_TX_CHECK_CONNECTION));		
 //		memset(&uart_tx_buffer, 0, UART_TX_BUFFER_SIZE);
 	}
 	else if (htim->Instance == TIM5)
 	{
 		if (flag_uart_plot == 1)
 		{
-//			memcpy(uart_tx_buffer, (char *)motor_speed, sizeof(UART_CHECK_CONNECTION));
-//			sprintf((char *)uart_tx_buffer, "%.1f", motor_speed);
-//			HAL_UART_Transmit_DMA(&huart4, uart_tx_buffer, 4);		
-//			memset(&uart_tx_buffer, 0, UART_TX_BUFFER_SIZE);
+			sprintf((char *)uart_tx_buffer, "%s %.1f   ", UART_MOTOR_PLOT, motor_speed);
+			HAL_UART_Transmit_DMA(&huart4, uart_tx_buffer, sizeof(UART_MOTOR_PLOT) + 4);		
+			memset(&uart_tx_buffer, 0, UART_TX_BUFFER_SIZE);
 		}
 	}
 	

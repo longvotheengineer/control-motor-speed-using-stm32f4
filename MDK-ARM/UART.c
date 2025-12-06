@@ -15,35 +15,23 @@ void uart_rx_handler(uint8_t *uart_rx_buffer)
 	if (strncmp((char *)uart_rx_cmd, UART_MOTOR_START, UART_CMD_SIZE) == 0)
 	{
 		motor.enable = true;
+		flag_uart_plot = 1;	
+		sscanf((char *)uart_rx_data, "%f %f %f %f", 
+			&motor_PID_config.Kp, &motor_PID_config.Ki, &motor_PID_config.Kd, &motor_PID_config.setpoint); 
 	}
 	else if (strncmp((char *)uart_rx_cmd, UART_MOTOR_STOP, UART_CMD_SIZE) == 0)
 	{
 		motor.enable = false;
+		flag_uart_plot = 0;	
 	}
 	else if (strncmp((char *)uart_rx_cmd, UART_MOTOR_INVERSE, UART_CMD_SIZE) == 0)
 	{
 		motor.direction = !motor.direction;
-	}
-	else if (strncmp((char *)uart_rx_cmd, UART_MOTOR_SPEED, UART_CMD_SIZE) == 0)
-	{
-		uint8_t setpoint = atoi((char *)uart_rx_data);
-		motor_PID_config.setpoint = setpoint;
-	}
-	else if (strncmp((char *)uart_rx_cmd, UART_MOTOR_PID, UART_CMD_SIZE) == 0)
-	{
-		motor_PID_config.Kp = uart_rx_data[9] - '0' + (uart_rx_data[10] - '0') / 10.0f;
-		motor_PID_config.Ki  = uart_rx_data[11] - '0' + (uart_rx_data[12] - '0') / 10.0f;
-		motor_PID_config.Kd = uart_rx_data[13] - '0' + (uart_rx_data[14] - '0') / 10.0f;
 	}
 	else if (strncmp((char *)uart_rx_cmd, UART_MOTOR_FREQUENCY, UART_CMD_SIZE) == 0)
 	{
 		motor.f_PWM = atoi((char *)uart_rx_data);
 		frequency_control(&htim1, motor.f_PWM);
 	}
-	else if (strncmp((char *)uart_rx_cmd, UART_MOTOR_PLOT, UART_CMD_SIZE) == 0)
-	{
-		flag_uart_plot = !flag_uart_plot;		
-	}
-	
 	memset(uart_rx_buffer, 0, UART_RX_BUFFER_SIZE);
 }

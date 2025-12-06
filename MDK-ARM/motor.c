@@ -8,7 +8,7 @@ bool motor_control(MotorControl_t *motor)
 	{
 		case MOTOR_ON:
 			motor_output	= motor_PID_config.out * 500 / motor_PID_config.limMax;
-		
+			
 			if (motor->direction == MOTOR_FORWARD)
 			{
 				HAL_GPIO_WritePin(GPIOD, GPIO_PIN_0, GPIO_PIN_SET);  
