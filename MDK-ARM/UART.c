@@ -1,7 +1,7 @@
 #include "uart.h"
 
-uint8_t 	uart_tx_buffer 	[UART_TX_BUFFER_SIZE];
-uint8_t 	uart_rx_buffer	[UART_RX_BUFFER_SIZE];
+uint8_t 	uart_tx_buffer 		[UART_TX_BUFFER_SIZE];
+uint8_t 	uart_rx_buffer		[UART_RX_BUFFER_SIZE];
 uint8_t 	uart_rx_cmd		[UART_CMD_SIZE];	
 uint8_t 	uart_rx_data		[UART_DATA_SIZE];	
 

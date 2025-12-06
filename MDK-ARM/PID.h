@@ -23,7 +23,7 @@ typedef struct
 	float setpoint;
 	float measurement; 
 	float out;       
-} PID_Config;
+} 	PID_Config;
 
 extern 	PID_Config motor_PID_config;
 extern	volatile uint32_t 	enc_val_cur;

@@ -11,21 +11,20 @@ bool motor_control(MotorControl_t *motor)
 		
 			if (motor->direction == MOTOR_FORWARD)
 			{
-				HAL_GPIO_WritePin(GPIOA, GPIO_PIN_2, GPIO_PIN_SET);  
-				HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, GPIO_PIN_RESET); 
-//				motor_output = 500;
+				HAL_GPIO_WritePin(GPIOD, GPIO_PIN_0, GPIO_PIN_SET);  
+				HAL_GPIO_WritePin(GPIOD, GPIO_PIN_1, GPIO_PIN_RESET); 
 				 __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, (uint32_t)motor_output);
 			}
 			else if (motor->direction == MOTOR_INVERSE)
 			{
-				HAL_GPIO_WritePin(GPIOA, GPIO_PIN_2, GPIO_PIN_RESET);  
-				HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, GPIO_PIN_SET); 
+				HAL_GPIO_WritePin(GPIOD, GPIO_PIN_0, GPIO_PIN_RESET);  
+				HAL_GPIO_WritePin(GPIOD, GPIO_PIN_1, GPIO_PIN_SET); 
 				__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, (uint32_t)motor_output);
 			}			
 			break;
 		case MOTOR_OFF:
-			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_2, GPIO_PIN_RESET);  
-            HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, GPIO_PIN_RESET); 
+			HAL_GPIO_WritePin(GPIOD, GPIO_PIN_0, GPIO_PIN_RESET);  
+            HAL_GPIO_WritePin(GPIOD, GPIO_PIN_1, GPIO_PIN_RESET); 
 			break;
 		default:
 			break;

@@ -38,9 +38,9 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 		if (flag_uart_plot == 1)
 		{
 //			memcpy(uart_tx_buffer, (char *)motor_speed, sizeof(UART_CHECK_CONNECTION));
-			sprintf((char *)uart_tx_buffer, "%.1f", motor_speed);
-			HAL_UART_Transmit_DMA(&huart4, uart_tx_buffer, 4);		
-			memset(&uart_tx_buffer, 0, UART_TX_BUFFER_SIZE);
+//			sprintf((char *)uart_tx_buffer, "%.1f", motor_speed);
+//			HAL_UART_Transmit_DMA(&huart4, uart_tx_buffer, 4);		
+//			memset(&uart_tx_buffer, 0, UART_TX_BUFFER_SIZE);
 		}
 	}
 	

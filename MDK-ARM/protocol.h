@@ -8,7 +8,7 @@
 #define UART_MOTOR_STOP				"M_STP"
 #define UART_MOTOR_INVERSE			"M_INV"
 #define UART_MOTOR_SPEED				"M_SPD"
-#define UART_MOTOR_PID				"M_PID"
+#define UART_MOTOR_PID					"M_PID"
 #define UART_MOTOR_FREQUENCY		"M_FRE"
 #define UART_MOTOR_PLOT				"M_PLT"
 
