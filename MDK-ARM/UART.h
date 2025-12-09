@@ -9,6 +9,13 @@
 #define UART_TX_BUFFER_SIZE		50
 #define UART_RX_BUFFER_SIZE		30
 
+typedef struct
+{
+  bool tx;
+  bool rx;
+} UARTConnection_t  
+
+extern UARTConnection_t uart_connection;
 extern uint8_t uart_tx_buffer 	[UART_TX_BUFFER_SIZE];
 extern uint8_t uart_rx_buffer	[UART_RX_BUFFER_SIZE];
 
