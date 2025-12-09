@@ -5,6 +5,7 @@
 
 #define ENC_PPR 11
 #define ENC_RATIO 45
+//#define ENC_RATIO 21.3
 #define ENC_TIME_SAMPLING 1e-2
 
 typedef struct 

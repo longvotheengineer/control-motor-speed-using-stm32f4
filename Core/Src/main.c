@@ -127,6 +127,8 @@ int main(void)
 	 if (flag_uart_rx == 1)
 	 {
 		 uart_rx_handler(uart_rx_buffer);
+		 	 
+		 
 	 }
     /* USER CODE END WHILE */
 

@@ -9,8 +9,8 @@ float				 	motor_output;
 
 PID_Config motor_PID_config = 
 {
-    .Kp 			= 5.0f,    
-    .Ki 			= 0.5f,     
+    .Kp 			= 0.0f,    
+    .Ki 			= 0.0f,     
     .Kd 			= 0.0f,     
     .T_sample 	= 0.01f, 
     .limMax 		= 130.0f, 
@@ -38,4 +38,3 @@ void PID_Compute(PID_Config *pid)
 
     pid->prevError = error;
 }
-
