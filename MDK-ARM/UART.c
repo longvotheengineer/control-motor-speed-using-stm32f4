@@ -23,6 +23,7 @@ void uart_rx_handler(uint8_t *uart_rx_buffer)
 	{
 		motor.enable = false;
 		flag_uart_plot = 0;	
+		motor_PID_config.integrator = 0;
 	}
 	else if (strncmp((char *)uart_rx_cmd, UART_MOTOR_INVERSE, UART_CMD_SIZE) == 0)
 	{
