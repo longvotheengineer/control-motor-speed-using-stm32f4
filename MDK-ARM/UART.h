@@ -20,6 +20,9 @@ extern UARTConnection_t uart_connection;
 extern uint8_t uart_tx_buffer 	[UART_TX_BUFFER_SIZE];
 extern uint8_t uart_rx_buffer	[UART_RX_BUFFER_SIZE];
 
+extern uint8_t uart_ack_buffer[10];
+extern uint32_t uart_timeout_cnt;
+
 void uart_rx_handler(uint8_t *uart_rx_buffer);
 
 #endif

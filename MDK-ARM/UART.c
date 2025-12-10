@@ -1,14 +1,16 @@
 #include "uart.h"
 
 UARTConnection_t uart_connection;
-
+uint32_t uart_timeout_cnt = 0;
 
 
 
 uint8_t 	uart_tx_buffer 		[UART_TX_BUFFER_SIZE];
 uint8_t 	uart_rx_buffer		[UART_RX_BUFFER_SIZE];
-uint8_t 	uart_rx_cmd		[UART_CMD_SIZE];	
+uint8_t 	uart_rx_cmd			[UART_CMD_SIZE];	
 uint8_t 	uart_rx_data		[UART_DATA_SIZE];	
+
+uint8_t uart_ack_buffer[10];
 
 void uart_rx_handler(uint8_t *uart_rx_buffer)
 {
@@ -41,7 +43,8 @@ void uart_rx_handler(uint8_t *uart_rx_buffer)
 	}
 	else if (strncmp((char *)uart_rx_cmd,UART_CMD_CHECK_ALIVE, UART_CMD_SIZE) == 0)
 	{
-		uart_connection.rx = true;	
+		uart_connection.rx = true;
+		uart_timeout_cnt = 0;
 	}
 	memset(uart_rx_buffer, 0, UART_RX_BUFFER_SIZE);
 }

@@ -127,8 +127,6 @@ int main(void)
 	 if (flag_uart_rx == 1)
 	 {
 		 uart_rx_handler(uart_rx_buffer);
-		 	 
-		 
 	 }
     /* USER CODE END WHILE */
 
@@ -371,7 +369,7 @@ static void MX_TIM4_Init(void)
 
   /* USER CODE END TIM4_Init 1 */
   htim4.Instance = TIM4;
-  htim4.Init.Prescaler = 9000-1;
+  htim4.Init.Prescaler = 3000-1;
   htim4.Init.CounterMode = TIM_COUNTERMODE_UP;
   htim4.Init.Period = 28000-1;
   htim4.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
@@ -548,6 +546,34 @@ void frequency_control(TIM_HandleTypeDef *htim, uint32_t f_PWM)
 	htim->Instance->EGR = TIM_EGR_UG;
 	__HAL_TIM_ENABLE(htim);
 }
+
+
+
+
+void HAL_UART_ErrorCallback(UART_HandleTypeDef *huart)
+{
+    if (huart->Instance == UART4) 
+    {
+        HAL_UART_DMAStop(huart);
+        
+        uint32_t temp_flag = 0;
+        temp_flag = huart->Instance->SR;
+        temp_flag = huart->Instance->DR;
+        (void)temp_flag; 
+
+        HAL_UART_Receive_DMA(huart, uart_rx_buffer, UART_RX_BUFFER_SIZE);
+        
+
+    }
+}
+
+
+
+
+
+
+
+
 /* USER CODE END 4 */
 
 /**
