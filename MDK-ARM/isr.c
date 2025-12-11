@@ -30,7 +30,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 
         if (huart2.gState == HAL_UART_STATE_READY) 
         {
-            if (uart_timeout_cnt < 4) 
+            if (uart_timeout_cnt < 3) 
             {
 				int len = sprintf((char *)uart_tx_buffer, "%s\n", UART_CMD_ACK_ALIVE);
                 HAL_UART_Transmit_DMA(&huart2, uart_tx_buffer, len);      
