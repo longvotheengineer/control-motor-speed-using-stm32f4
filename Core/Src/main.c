@@ -528,7 +528,7 @@ static void MX_GPIO_Init(void)
 uint32_t PSC;
 void frequency_control(TIM_HandleTypeDef *htim, uint32_t f_PWM)
 {
-	uint32_t f_TIM 	= 168000000;
+	uint32_t f_TIM 	= 168000000;			
 	uint32_t ARR	= htim1.Init.Period;
 	
 	PSC = (f_TIM / (ARR + 1)) / f_PWM - 1;
